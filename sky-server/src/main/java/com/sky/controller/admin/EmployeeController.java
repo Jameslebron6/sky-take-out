@@ -95,7 +95,7 @@ public class EmployeeController {
     }
 
     /**
-     * 启用禁用员工账
+     * 启用禁用员工账号
      * @param status
      * @param id
      * @return
