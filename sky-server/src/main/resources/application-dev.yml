@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: Zwq12345!
+  alioss:
+    endpoint: oss-ap-southeast-2.aliyuncs.com
+    access-key-id: LTAI5tES4LLCM9HVF4CoNy5d
+    access-key-secret: FrtrSYc4wc93QhBBkqovo7uRUrC96c
+    bucket-name: lerbon-james-java

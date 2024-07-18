@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.DishMapper">
+<!--    //useGeneratedKeys="true" keyProperty="id"是声明主键的值并返回，因为主键值是自动生成的，前端无法提交过来-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into dish
         (name, category_id, price, image, description, status, create_time, update_time, create_user, update_user)
