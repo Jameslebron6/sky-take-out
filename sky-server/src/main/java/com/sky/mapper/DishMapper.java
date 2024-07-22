@@ -40,6 +40,12 @@ public interface DishMapper {
     /**
      * 菜品起售、停售
      */
+
+
+    /**
+     * 根据id动态修改菜品的数据
+     * @param dish
+     */
     @AutoFill(value = OperationType.UPDATE)
     void update(Dish dish);
 
@@ -71,4 +77,13 @@ public interface DishMapper {
      * @return
      */
     Integer countByMap(Map map);
+
+    /**
+     * 根据菜品id集合，批量删除菜品
+     * @param ids
+     */
+    void deleteByIds(List<Long> ids);
+
+
+
 }
