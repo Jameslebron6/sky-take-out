@@ -88,4 +88,5 @@
             </if>
         </where>
     </select>
+    <select id="getBySetmealId" resultType="com.sky.entity.Dish"></select>
 </mapper>

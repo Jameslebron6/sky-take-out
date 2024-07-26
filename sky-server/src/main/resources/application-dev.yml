@@ -11,3 +11,8 @@ sky:
     access-key-id: LTAI5tES4LLCM9HVF4CoNy5d
     access-key-secret: FrtrSYc4wc93QhBBkqovo7uRUrC96c
     bucket-name: lerbon-james-java
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0

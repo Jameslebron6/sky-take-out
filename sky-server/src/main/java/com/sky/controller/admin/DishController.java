@@ -69,6 +69,9 @@ public class DishController {
        log.info("修改菜品:{}",dishDTO);
        dishService.updateWithFlavor(dishDTO);
        return Result.success();
+       
    }
+
+
 
 }
