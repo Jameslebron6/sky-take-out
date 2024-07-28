@@ -22,6 +22,7 @@ public interface SetmealMapper {
      * @param categoryId
      * @return
      */
+    @Select("select count(id) from setmeal where category_id = #{categoryId}")
     Integer countByCategoryId(@Param("categoryId") Long categoryId);
 
     /**
@@ -70,6 +71,9 @@ public interface SetmealMapper {
      * @param id
      * @return
      */
+    @Select("select sd.name, sd.copies, d.image, d.description " +
+            "from setmeal_dish sd left join dish d on sd.dish_id = d.id " +
+            "where sd.setmeal_id = #{setmealId}")
     List<DishItemVO> getDishItemBySetmealId(Long id);
 
     /**
