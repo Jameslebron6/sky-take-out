@@ -35,6 +35,12 @@
         from shopping_cart
         where id=#{id};
     </delete>
+    <delete id="deleteByDishId">
+        delete
+        from shopping_cart
+        where dish_id=#{dishId};
+
+    </delete>
 
     <!--    条件查询-->
     <select id="list" resultType="com.sky.entity.ShoppingCart">

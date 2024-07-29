@@ -33,4 +33,6 @@ public interface ShoppingCartMapper {
      * @param currentId
      */
     void deleteByUserId(Long currentId);
+
+    void deleteByDishId(Long dishId);
 }

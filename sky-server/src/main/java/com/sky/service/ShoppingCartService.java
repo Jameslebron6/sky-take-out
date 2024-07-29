@@ -23,4 +23,6 @@ public interface ShoppingCartService {
      */
 
     void cleanShoppingCart();
+
+    void deleteShoppingCart(ShoppingCartDTO shoppingCartDTO);
 }

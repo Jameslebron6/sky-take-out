@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static java.util.Collections.list;
+
 @Service
 @Slf4j
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -72,6 +74,33 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     /**
+     * 删除购物车中的物品
+     * @param shoppingCartDTO
+     */
+    public void deleteShoppingCart(ShoppingCartDTO shoppingCartDTO) {
+
+        List<ShoppingCart> list = showShoppingcart();
+        for(int i=0;i<list.size();i++)
+        {
+            ShoppingCart shoppingCart = list.get(i);
+            if(shoppingCart.getDishId()==shoppingCartDTO.getDishId()){
+                if(shoppingCart.getNumber()>1){
+                    shoppingCart.setNumber(shoppingCart.getNumber()-1);
+                    shoppingCartMapper.updateNumberById(shoppingCart);
+                } else if(shoppingCart.getNumber()==1){
+                    shoppingCartMapper.deleteByDishId(shoppingCart.getDishId());
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+
+    /**
      * 查看购物车
      * @return
      */
@@ -95,4 +124,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCartMapper.deleteByUserId(currentId);
 
     }
+
+
+
 }
