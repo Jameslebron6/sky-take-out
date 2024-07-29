@@ -27,7 +27,7 @@
     <delete id="deleteByUserId">
         delete
         from shopping_cart
-        where user_id=#{id};
+        where user_id=#{currentId};
     </delete>
 <!--    根据id删除商品-->
     <delete id="deleteById">
