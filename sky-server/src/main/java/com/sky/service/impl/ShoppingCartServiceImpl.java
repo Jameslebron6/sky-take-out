@@ -26,7 +26,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private DishMapper dishMapper;
     @Autowired
     private SetmealMapper setmealMapper;
-
     /**
      * 添加购物车
      * @param shoppingCartDTO
@@ -70,9 +69,20 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             shoppingCartMapper.insert(shoppingCart);
 
         }
+    }
 
+    /**
+     * 查看购物车
+     * @return
+     */
+    public List<ShoppingCart> showShoppingcart() {
+        //获取当前用户的id
+        Long currentId = BaseContext.getCurrentId();
+        ShoppingCart shoppingCart=ShoppingCart.builder()
+                .userId(currentId)
+                .build();
+        List<ShoppingCart> list=shoppingCartMapper.list(shoppingCart);
 
-
-
+        return list;
     }
 }
