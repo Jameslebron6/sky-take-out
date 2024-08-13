@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sky.constant.MessageConstant;
 import com.sky.context.BaseContext;
@@ -15,6 +16,7 @@ import com.sky.service.ShoppingCartService;
 import com.sky.utils.WeChatPayUtil;
 import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderSubmitVO;
+import com.sky.websocket.WebSocketServer;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,8 @@ public class OrderServiceImpl implements OrderService {
     private UserMapper userMapper;
     @Autowired
     private WeChatPayUtil weChatPayUtil;
+    @Autowired
+    private WebSocketServer webSocketServer;
 
     public static Long orderId;
     /**
@@ -171,10 +175,15 @@ public class OrderServiceImpl implements OrderService {
 
         HashMap map = new HashMap();
         map.put("type", 1);
-        map.put("orderId", orders.getId());
+        map.put("orderId", orderDB.getId());
         map.put("content", "订单号：" + outTradeNo);
+        String jsonString = JSON.toJSONString(map);
+        webSocketServer.sendToAllClient(jsonString);
 
-//        通过WebSocket实现来电提醒，向客户端浏览器推送消息
+
+
+
+//      通过WebSocket实现来电提醒，向客户端浏览器推送消息 type orderId content
       //  webSocketServer.sendToAllClient(JSON.toJSONString(map));
 
     }
