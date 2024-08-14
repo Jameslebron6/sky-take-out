@@ -57,7 +57,6 @@ public class ReportController {
         log.info("用户数据统计: {},{}",begin,end);
 
 
-
         return  Result.success(reportService.getUserStatistics(begin,end));
 
     }
@@ -93,13 +92,6 @@ public class ReportController {
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
         return Result.success(reportService.getSalesTop10(begin,end));
     }
-
-
-
-
-
-
-
 
 
 
